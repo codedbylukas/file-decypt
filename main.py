@@ -34,7 +34,6 @@ elif decrypting:
 file_paths = []
 
 def get_all_files(directory):
-
     for root, dirs, files in os.walk(directory):
         for file in files:
             if (
@@ -75,5 +74,7 @@ def decrypt_file(file_path, key):
 
 get_all_files("neuer_ordner")
 for file in file_paths:
-    encrypt_file(file, key)
-    decrypt_file(file, key)
+    if encrypting:
+        encrypt_file(file, key)
+    elif decrypting:
+        decrypt_file(file, key)
