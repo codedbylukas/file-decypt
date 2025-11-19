@@ -3,6 +3,8 @@ import os
 
 key = fernet.Fernet.generate_key()
 
+folder_name = input("Enter the folder name to create and process files: ")
+
 print("""Do you want to 
 1.encrypt 
 2.decrypt 
@@ -71,7 +73,7 @@ def decrypt_file(file_path, key):
         print(f"An error occurred during decryption: {file_path}: {e}")
 
 
-get_all_files("neuer_ordner")
+get_all_files(folder_name)
 for file in file_paths:
     if encrypting:
         encrypt_file(file, key)
