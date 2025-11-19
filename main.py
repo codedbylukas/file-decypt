@@ -21,11 +21,10 @@ else:
     exit()
 if encrypting:
     print("You chose to encrypt the files.")
-    print("You chose to decrypt the files.")
     print("Schlüssel: ", key.decode())
     key_file = open("key_file.txt", "w")
     key_file.write(key.decode())
-    print("Den Schlüssel bitte gut aufheben, denn sonst kann das hier nie wieder entschlüsselt werden.")
+    print("Please keep the key safe, otherwise this can never be decrypt again.")
 elif decrypting:
     print("You chose to decrypt the files.")
     key_file = open("key_file.txt", "r")
@@ -56,7 +55,7 @@ def encrypt_file(file_path, key):
         with open(file_path, "wb") as file:
             file.write(encrypted_data)
     except Exception as e:
-        print(f"Beim Verschlüsseln ist ein Fehler aufgetreten {file_path}: {e}")
+        print(f"An error occurred while encrypting:  {file_path}: {e}")
 
 def decrypt_file(file_path, key):
     try:
@@ -69,7 +68,7 @@ def decrypt_file(file_path, key):
         with open(file_path, 'wb') as file:
             file.write(decrypted_data)
     except Exception as e:
-        print(f"Beim Entschlüsseln ist ein Fehler aufgetreten {file_path}: {e}")
+        print(f"An error occurred during decryption: {file_path}: {e}")
 
 
 get_all_files("neuer_ordner")
