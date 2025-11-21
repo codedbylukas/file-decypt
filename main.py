@@ -101,3 +101,5 @@ elif file:
     elif decrypting:
         decrypt_file(file_name, key)
 print("Process completed.")
+input("Press Enter to exit...")
+
