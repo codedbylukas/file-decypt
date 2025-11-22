@@ -64,7 +64,7 @@ while True:
             input("Press Enter to exit...")
             exit()
         print(f"Processing file: {file_name}")
-    else:
+    elif file_or_folder.lower() == 'd':
         file = False
         folder = True
         folder_name = input(f"Enter the folder name to create and process files: ")
@@ -72,6 +72,9 @@ while True:
             print(f"The folder '{folder_name}' does not exist. ")
             input("Press Enter to exit...")
             exit()
+    else:
+        print("Invalid input. Please enter 'f' for file or 'd' for directory.")
+        exit()
 
     print("""Do you want to 
     1.encrypt 
