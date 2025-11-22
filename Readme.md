@@ -1,15 +1,34 @@
-# 🔐 File Encryption and Decryption Tool (Dynamic Folder Version)
+# 🔐 File & Folder Encryption & Decryption Tool 
 
-This Python script encrypts and decrypts files using the `cryptography` library and the `Fernet` encryption method.  
-Unlike the basic version, this script allows you to **create and process any folder name entered by the user**.
+This project is a powerful tool that can encrypt and decrypt single files or entire directories using the cryptography library with Fernet encryption.
+
+Available both as a Python script and as a Windows EXE.
+
+⸻
 
 ## ✨ Features
 
-- 🔑 Automatic key generation  
-- 📁 User-defined folder selection  
-- 🔒 Encrypt files  
-- 🔓 Decrypt files  
-- 🚫 Skips internal program files (`key_file.txt`, `main.exe`, `main.py`)
+— 🔑 Automatic key generation
+— 📁 File or directory mode
+— 🔒 AES256-based Fernet encryption
+— 🔓 Secure decryption
+— 📦 Windows EXE available (no Python needed)
+— 🛑 Skips internal files (key_file.txt, main.exe, main.py)
+— 📁 Recursive folder scanning
+— 🧱 Error handling with clear messages
+
+## 📥 Installation (Windows EXE)
+	1.	Download main.exe from the Releases tab.
+	2.	Place it anywhere on your system.
+	3.	(Optional) Create a desktop shortcut.
+	4.	Run it with a double-click.
+
+## Benefits of the EXE version:
+— No Python required
+— Portable
+— Fully offline
+— Zero setup
+
 
 ## 📦 Requirements
 
@@ -20,15 +39,26 @@ Unlike the basic version, this script allows you to **create and process any fol
   pip install cryptography
 ```
 
-## 🧠 How It Works
-## 1. Folder Input 📂
+### Run
 
-When the script starts, you are asked to enter the folder name that should be created and processed:
+```bash
+  python main.py
+```
+
+## 🧠 How It Works
+
+```bash
+Do you want to process a file or a folder? (f for file / d for directory)
+```
+
+- f selects a file
+- d select a directory
+
 ```bash
    Enter the folder name to create and process files:
 ```
 
-Make sure the folder exists or create it before running the script.
+Make sure the folder/file exists or create it before running the script.
 
 ## 2. Choose an Action
 
@@ -43,7 +73,10 @@ You then select:
 
 - 2 loads the key from key_file.txt and decrypts the files.
 
-## 3. Key Handling 🔑
+## Key Handling 🔑
+	•	Encryption generates a new key automatically
+	•	You must store it securely
+
 
 - During encryption, the script writes the generated key to:
 
@@ -78,16 +111,19 @@ Ignored files:
 ```bash
     python main.py
 ```
-3. Enter the folder name when prompted.
-4. Choose 1 (encrypt) or 2 (decrypt).
-5. Keep the key file safe.
+3. use folder or file
+4. Enter the folder name when prompted.
+5. Choose 1 (encrypt) or 2 (decrypt).
+6. Keep the key file safe.
 
 ## ⚠️ Important Notes
-
-- Do not delete or modify key_file.txt before decrypting.
-- Encrypted files overwrite the originals.
-- Make backups if your data matters.
+- 🔥 Files cannot be recovered without the correct key
+- 🔁 Encrypted files overwrite the originals
+- 💾 Always make backups
+- 🚫 Do not modify key_file.
 
 ## 📜 Disclaimer
 
-Use this tool responsibly. Losing your encryption key or encrypting critical files without backups can result in irreversible data loss.
+This tool uses strong encryption.
+The user is responsible for key management.
+Losing the key means permanently losing access to encrypted data.
