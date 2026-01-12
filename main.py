@@ -2,6 +2,7 @@ from cryptography import fernet
 from crypto import encrypt_file, decrypt_file
 from get_all_files import file_paths, get_all_files_fnc
 import os
+from _pyrepl.simple_interact import check
 
 key = None  # Initialize key globally
 folder_name = None
@@ -57,13 +58,17 @@ def encrypting_or_decrypting():
         print("Invalid choice. Exiting.")
         exit()
 
+def check_key():
+    global key  # Ensure we're using the global key variable
+    if key is None:  # Check if key is properly initialized
+        print("Error: Key is not initialized. Exiting.")
+        exit()
+
 def main():
     global key, folder_name  # Ensure global variables are used
     folder, file = folder_or_file()
     encrypting_or_decrypting()
-    if key is None:  # Check if key is properly initialized
-        print("Error: Key is not initialized. Exiting.")
-        exit()
+    check_key()
     if encrypting:
         print("You chose to encrypt the files.")
         print("Schlüssel: ", key.decode())
