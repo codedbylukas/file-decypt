@@ -4,18 +4,18 @@ This project is a powerful tool that can encrypt and decrypt single files or ent
 
 Available both as a Python script and as a Windows EXE.
 
-## ✨ Features
+## Features
 
 - 🔑 Automatic key generation
 - 📁 File or directory mode
 - 🔒 AES256-based Fernet encryption
 - 🔓 Secure decryption
 - 📦 Windows EXE available (no Python needed)
-- 🛑 Skips internal files (key_file.txt, main.exe, main.py)
+- Skips internal files (key_file.txt, main.exe, main.py)
 - 📁 Recursive folder scanning
 - 🧱 Error handling with clear messages
 
-## 📥 Installation (Windows EXE)
+## Installation (Windows EXE)
 	1.	Download main.exe from the Releases tab.
 	2.	Place it anywhere on your system.
 	3.	(Optional) Create a desktop shortcut.
@@ -29,7 +29,7 @@ Available both as a Python script and as a Windows EXE.
 - Zero setup
 
 
-## 📦 Requirements
+## Requirements
 
 - Python 3.x  
 - `cryptography` library  
@@ -44,7 +44,7 @@ Available both as a Python script and as a Windows EXE.
   python main.py
 ```
 
-## 🧠 How It Works
+## How It Works
 
 ```bash
 Do you want to process a file or a folder? (f for file / d for directory)
@@ -86,7 +86,7 @@ You then select:
 - Store this key safely.
 Without it, decrypting the files is impossible.
 
-## File Collection 📁
+## File Collection 
 
 All files inside the user-defined folder are scanned recursively.
 
@@ -102,7 +102,7 @@ Ignored files:
 - Decryption uses Fernet.decrypt()
 - Any file-level errors are displayed during processing
 
-## ▶️ Usage
+##  Usage
 
 1. Create a folder with any name.
 2. Run the script:
@@ -115,13 +115,13 @@ Ignored files:
 5. Choose 1 (encrypt) or 2 (decrypt).
 6. Keep the key file safe.
 
-## ⚠️ Important Notes
-- 🔥 Files cannot be recovered without the correct key
-- 🔁 Encrypted files overwrite the originals
-- 💾 Always make backups
-- 🚫 Do not modify key_file.
+## Important Notes
+- Files cannot be recovered without the correct key
+- Encrypted files overwrite the originals
+- Always make backups
+- Do not modify key_file.
 
-## 📜 Disclaimer
+## Disclaimer
 
 This tool uses strong encryption.
 The user is responsible for key management.
