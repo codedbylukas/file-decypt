@@ -1,4 +1,4 @@
-# 🔐 File & Folder Encryption & Decryption Tool 
+#  File & Folder Encryption & Decryption Tool 
 
 This project is a powerful tool that can encrypt and decrypt single files or entire directories using the cryptography library with Fernet encryption.
 
@@ -6,17 +6,17 @@ Available both as a Python script and as a Windows EXE.
 
 ## Features
 
-- 🔑 Automatic key generation
-- 📁 File or directory mode
-- 🔒 AES256-based Fernet encryption
-- 🔓 Secure decryption
-- 📦 Windows EXE available (no Python needed)
+-  Automatic key generation
+-  File or directory mode
+-  AES256-based Fernet encryption
+-  Secure decryption
+-  Windows EXE available (no Python needed)
 - Skips internal files (key_file.txt, main.exe, main.py)
-- 📁 Recursive folder scanning
-- 🧱 Error handling with clear messages
+-  Recursive folder scanning
+-  Error handling with clear messages
 
 ## Installation (Windows EXE)
-	1.	Download main.exe from the Releases tab.
+	1.	Download main.exe
 	2.	Place it anywhere on your system.
 	3.	(Optional) Create a desktop shortcut.
 	4.	Run it with a double-click.
@@ -64,15 +64,15 @@ Make sure the folder/file exists or create it before running the script.
 You then select:
 
 ```bash
-    1. encrypt 🔒 
-    2. decrypt 🔓
+    1. encrypt 
+    2. decrypt 
 ```
 
 - 1 generates a key and encrypts all files inside the selected folder.
 
 - 2 loads the key from key_file.txt and decrypts the files.
 
-## Key Handling 🔑
+## Key Handling 
 	•	Encryption generates a new key automatically
 	•	You must store it securely
 
@@ -96,7 +96,7 @@ Ignored files:
 - main.exe
 - main.py
 
-## 5. Encryption / Decryption ⚙️
+## 5. Encryption / Decryption 
 
 - Encryption uses Fernet.encrypt()
 - Decryption uses Fernet.decrypt()
