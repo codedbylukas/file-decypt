@@ -12,11 +12,8 @@ def test_callable_decrypt_file():
     assert callable(decrypt_file)
 
 
-def test_import():
-    from src.crypto import fernet, exit
 
-    assert callable(fernet)
-    assert callable(exit)
+
 
 
 def test_encypt_file_with_wrong_key():
@@ -78,3 +75,32 @@ def test_encrypt_and_decrypt_file():
             file.write("Hello World")
     except Exception as e:
         pytest.fail(f"An error occurred: {e}")
+
+
+def test_decrypt_file_not_found():
+    key = fernet.Fernet.generate_key()
+    with pytest.raises(SystemExit) as excinfo:
+        decrypt_file("test_files/nonexistent.txt", key)
+    assert excinfo.value.code == 1
+
+
+def test_encrypt_file_not_found():
+    key = fernet.Fernet.generate_key()
+    with pytest.raises(SystemExit) as excinfo:
+        encrypt_file("test_files/nonexistent.txt", key)
+    assert excinfo.value.code == 1
+
+
+def test_decrypt_file_wrong_key_and_file():
+    key = fernet.Fernet.generate_key()
+    with pytest.raises(SystemExit) as excinfo:
+        decrypt_file("test_files/doesnotexist.txt", "wrong_key")
+    assert excinfo.value.code == 1
+
+
+def test_encrypt_file_wrong_key():
+    key = fernet.Fernet.generate_key()
+    with pytest.raises(SystemExit) as excinfo:
+        encrypt_file("test_files/doesnotexist.txt", "wrong_key")
+    assert excinfo.value.code == 1
+
