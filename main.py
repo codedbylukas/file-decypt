@@ -59,13 +59,11 @@ def encrypting_or_decrypting():
         exit()
 
 def check_key():
-    global key  # Ensure we're using the global key variable
     if key is None:  # Check if key is properly initialized
         print("Error: Key is not initialized. Exiting.")
         exit()
 
 def main():
-    global key, folder_name  # Ensure global variables are used
     folder, file = folder_or_file()
     encrypting_or_decrypting()
     check_key()
