@@ -68,4 +68,9 @@ if __name__ == "__main__":
         do_exit = input("Do you want to exit? (y/n): ")
         if do_exit.lower() == "y":
             exit(0)
-    input("Press Enter to exit...")
+        if do_exit.lower() == "n":
+            continue
+        if do_exit.lower() != "n" and do_exit.lower() != "y":
+            print("Invalid choice. Continuing.")
+            continue
+

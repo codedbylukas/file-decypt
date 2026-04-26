@@ -34,7 +34,11 @@ def folder_or_file(folder_name, file_name):
     1. work with a folder 
     2. work with a single file?""")
     input_choice = input("Enter 1 or 2: ")
-    int_choice = int(input_choice)
+    try:
+        int_choice = int(input_choice)
+    except ValueError:
+        print("Invalid choice. Exiting.")
+        exit(1)
     if int_choice == 1:
         folder = True
         file = False
