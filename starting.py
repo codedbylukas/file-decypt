@@ -68,25 +68,31 @@ def folder_or_file(folder_name, file_name):
 
 
 def encrypting_or_decrypting(encrypting, decrypting, key):
-    
-    print("""Do you want to 
-    1.encrypt 
-    2.decrypt 
-    the files'?""")
-    input_choice = input("Enter 1 or 2: ")
-    int_choice = make_to_intiger(input_choice)
-    if int_choice == 1:
-        encrypting = True
-        decrypting = False
-        key = fernet.Fernet.generate_key()  # Generate key for encryption
-    elif int_choice == 2:
-        encrypting = False
-        decrypting = True
-        key = save_key()
-    else:
-        print("Invalid choice. Exiting.")
+    try:
+        print("""Do you want to 
+        1.encrypt 
+        2.decrypt 
+        the files'?""")
+        input_choice = input("Enter 1 or 2: ")
+        int_choice = make_to_intiger(input_choice)
+        if int_choice == 1:
+            encrypting = True
+            decrypting = False
+            key = fernet.Fernet.generate_key()  # Generate key for encryption
+        elif int_choice == 2:
+            encrypting = False
+            decrypting = True
+            key = save_key()
+        else:
+            print("Invalid choice. Exiting.")
+            exit(1)
+        return encrypting, decrypting, key
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        exit(0)
+    except Exception as e:
+        print(f"An error occurred: {e}")
         exit(1)
-    return encrypting, decrypting, key
 
 
 def check_key(key: str):
