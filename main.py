@@ -2,11 +2,17 @@ from sys import exit
 
 from cryptography import fernet
 from src.starting import folder_or_file, encrypting_or_decrypting, check_key
-from src.main_helper import if_file, store_key_encrypted, get_key_encrypted, when_its_an_folder
+from src.main_helper import (
+    if_file,
+    store_key_encrypted,
+    get_key_encrypted,
+    when_its_an_folder,
+)
 
 key = None  # Initialize key globally
 input_choice: str = "None"
 int_choice: int = None
+
 
 def main():
     global key

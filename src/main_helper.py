@@ -1,6 +1,7 @@
 from src.crypto import encrypt_file, decrypt_file
 from src.get_all_files import file_paths, get_all_files_fnc
 
+
 def if_file(encrypting: bool, decrypting: bool, file_path: str, key: bytes):
     if encrypting:
         encrypt_file(file_path, key)
@@ -35,4 +36,3 @@ def when_its_an_folder(
             encrypt_file(file, key)
         elif decrypting:
             decrypt_file(file, key)
-
