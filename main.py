@@ -1,7 +1,6 @@
 from cryptography import fernet
 from crypto import encrypt_file, decrypt_file
 from get_all_files import file_paths, get_all_files_fnc
-import os
 
 key = None  # Initialize key globally
 folder_name = None
