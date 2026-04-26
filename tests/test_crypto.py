@@ -41,5 +41,11 @@ def test_encypt_file():
             file.write("Hello World")
         key = fernet.Fernet.generate_key()
         encrypt_file(str(test_file), key)
+        with open(test_file, "r") as file:
+            encrypted_data = file.read()
+        assert encrypted_data != "Hello World"
+        
+        with open(test_file, "w") as file:
+            file.write("Hello World")
     except Exception as e:
         pytest.fail(f"An error occurred: {e}")
