@@ -1,3 +1,4 @@
+from sys import exit
 import os
 
 file_paths = []
@@ -12,7 +13,9 @@ def get_all_files_fnc(directory):
                     continue
                 file_paths.append(os.path.join(root, file))
         return file_paths
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        exit(0)
     except Exception as e:
         print(f"An error occurred while accessing the directory: {e}")
-        input("Press Enter to exit...")
-        exit()
+        exit(1)
