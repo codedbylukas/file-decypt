@@ -4,35 +4,41 @@ from get_all_files import file_paths, get_all_files_fnc
 from starting import folder_or_file, encrypting_or_decrypting, check_key
 
 key = None  # Initialize key globally
-folder_name = None
-file_name = None
-decrypting = False
-encrypting = False
+
+
+
+
 input_choice = "None"
 int_choice = None
 key = None
 
-def main():
-    global key, encrypting, decrypting
-    folder, file = folder_or_file(folder_name, file_name)
-    encrypting, decrypting, key = encrypting_or_decrypting(encrypting, decrypting, key)
-    check_key(key)
-    if encrypting:
-        print("You chose to encrypt the files.")
-        print("Schlüssel: ", key.decode())
-        with open("key_file.txt", "w") as key_file:
-            key_file.write(key.decode())
-        print("Please keep the key safe, otherwise this can never be decrypted again.")
-    elif decrypting:
-        print("You chose to decrypt the files.")
-        key_file = open("key_file.txt", "r")
+def store_key_encrypted():
+    print("You chose to encrypt the files.")
+    print("Schlüssel: ", key.decode())
+    with open("key_file.txt", "w") as key_file:
+        key_file.write(key.decode())
+    print("Please keep the key safe, otherwise this can never be decrypted again.")
+
+def get_key_encrypted():
+    print("You chose to decrypt the files.")
+    with open("key_file.txt", "r") as key_file:
         key_input = key_file.read()
         key = key_input.encode()
+
+def main():
+    global key
+    folder, file, folder_path, file_path = folder_or_file(None, None)
+    encrypting, decrypting, key = encrypting_or_decrypting(None, None, key)
+    check_key(key)
+    if encrypting:
+        store_key_encrypted()
+    elif decrypting:
+        get_key_encrypted()
     if folder:
-        if not folder_name:  # Ensure folder_name is not None
-            print("Error: Folder name is not set. Exiting.")
+        if not folder_path:
+            print("Error: Folder path is not set. Exiting.")
             exit()
-        get_all_files_fnc(folder_name)
+        get_all_files_fnc(folder_path)
         for file in file_paths:
             if encrypting:
                 encrypt_file(file, key)
@@ -40,9 +46,9 @@ def main():
                 decrypt_file(file, key)
     elif file:
         if encrypting:
-            encrypt_file(file_name, key)
+            encrypt_file(file_path, key)
         elif decrypting:
-            decrypt_file(file_name, key)
+            decrypt_file(file_path, key)
     print("Process completed.")
 
 

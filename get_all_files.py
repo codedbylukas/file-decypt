@@ -4,6 +4,7 @@ file_paths = []
 
 
 def get_all_files_fnc(directory):
+    file_paths.clear()
     try:
         for root, dirs, files in os.walk(directory):
             for file in files:

@@ -1,5 +1,6 @@
 from cryptography import fernet
 from sys import exit
+import os
 
 
 def folder_or_file(folder_name, file_name):
@@ -11,15 +12,25 @@ def folder_or_file(folder_name, file_name):
     if int_choice == 1:
         folder = True
         file = False
-        folder_name = input("Enter the folder path: ")
+        folder_name = input("Enter the folder path: ").strip()
+        if os.path.exists(folder_name):
+            print(folder_name)
+        else:
+            print("Folder not found. Exiting.")
+            exit(1)
     elif int_choice == 2:
         folder = False
         file = True
-        file_name = input("Enter the file path: ")
+        file_name = input("Enter the file path: ").strip()
+        if os.path.exists(file_name):
+            print(file_name)
+        else:
+            print("File not found. Exiting.")
+            exit(1)
     else:
         print("Invalid choice. Exiting.")
         exit()
-    return folder, file
+    return folder, file, folder_name, file_name
 
 
 def encrypting_or_decrypting(encrypting, decrypting, key):
