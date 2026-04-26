@@ -11,6 +11,7 @@ input_choice = "None"
 int_choice = None
 key = None
 
+
 def folder_or_file():
     global folder_name, file_name  # Declare global variables
     print("""Do you want to 
@@ -30,6 +31,7 @@ def folder_or_file():
         print("Invalid choice. Exiting.")
         exit()
     return folder, file
+
 
 def encrypting_or_decrypting():
     global encrypting, decrypting, key  # Declare global variables
@@ -56,10 +58,12 @@ def encrypting_or_decrypting():
         print("Invalid choice. Exiting.")
         exit()
 
+
 def check_key():
     if key is None:  # Check if key is properly initialized
         print("Error: Key is not initialized. Exiting.")
         exit()
+
 
 def main():
     global key
@@ -93,11 +97,12 @@ def main():
         elif decrypting:
             decrypt_file(file_name, key)
     print("Process completed.")
- 
-if __name__ == "__main__":   
+
+
+if __name__ == "__main__":
     while True:
         main()
         do_exit = input("Do you want to exit? (y/n): ")
-        if do_exit.lower() == 'y':
-            break  
+        if do_exit.lower() == "y":
+            break
     input("Press Enter to exit...")
