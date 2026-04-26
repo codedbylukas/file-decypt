@@ -103,6 +103,4 @@ if __name__ == "__main__":
         do_exit = input("Do you want to exit? (y/n): ")
         if do_exit.lower() == 'y':
             break  
-
-
-input("Press Enter to exit...")
+    input("Press Enter to exit...")
