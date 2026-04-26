@@ -2,6 +2,7 @@ from cryptography import fernet
 from sys import exit
 import os
 
+
 def make_to_intiger(input_choice: str):
     try:
         int_choice = int(input_choice)
@@ -9,6 +10,7 @@ def make_to_intiger(input_choice: str):
         print("Invalid choice. Exiting.")
         exit(1)
     return int_choice
+
 
 def testing_exist(name):
     try:
