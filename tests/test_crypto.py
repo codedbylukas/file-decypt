@@ -12,10 +12,6 @@ def test_callable_decrypt_file():
     assert callable(decrypt_file)
 
 
-
-
-
-
 def test_encypt_file_with_wrong_key():
     with pytest.raises(SystemExit) as excinfo:
         encrypt_file("test_files/fail.txt", "wrong_key")
@@ -103,4 +99,3 @@ def test_encrypt_file_wrong_key():
     with pytest.raises(SystemExit) as excinfo:
         encrypt_file("test_files/doesnotexist.txt", "wrong_key")
     assert excinfo.value.code == 1
-
