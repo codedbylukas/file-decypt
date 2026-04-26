@@ -1,4 +1,5 @@
 from cryptography import fernet
+from sys import exit
 
 
 def folder_or_file(folder_name, file_name):
@@ -40,14 +41,15 @@ def encrypting_or_decrypting(encrypting, decrypting, key):
                 key = key_file.read().encode()  # Read key for decryption
         except FileNotFoundError:
             print("Key file not found. Cannot decrypt.")
-            exit()
+            exit(1)
     else:
         print("Invalid choice. Exiting.")
-        exit()
+        exit(1)
+    return encrypting, decrypting, key
 
 
 def check_key(key: str):
     if key is None:  # Check if key is properly initialized
         print("Error: Key is not initialized. Exiting.")
-        exit()
+        exit(1)
 

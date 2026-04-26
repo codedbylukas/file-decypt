@@ -15,7 +15,7 @@ key = None
 def main():
     global key
     folder, file = folder_or_file(folder_name, file_name)
-    encrypting_or_decrypting(encrypting, decrypting, key)
+    encrypting, decrypting, key = encrypting_or_decrypting(encrypting, decrypting, key)
     check_key(key)
     if encrypting:
         print("You chose to encrypt the files.")
