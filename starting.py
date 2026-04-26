@@ -18,6 +18,15 @@ def testing_exist(name):
         input("Press Enter to exit...")
         exit()
 
+def save_key():
+    try:
+        with open("key_file.txt", "r") as key_file:
+            key = key_file.read().encode()  # Read key for decryption
+    except FileNotFoundError:
+        print("Key file not found. Cannot decrypt.")
+        exit(1)
+    return key
+
 
 def folder_or_file(folder_name, file_name):
     print("""Do you want to 
@@ -55,12 +64,7 @@ def encrypting_or_decrypting(encrypting, decrypting, key):
     elif int_choice == 2:
         encrypting = False
         decrypting = True
-        try:
-            with open("key_file.txt", "r") as key_file:
-                key = key_file.read().encode()  # Read key for decryption
-        except FileNotFoundError:
-            print("Key file not found. Cannot decrypt.")
-            exit(1)
+        key = save_key()
     else:
         print("Invalid choice. Exiting.")
         exit(1)
