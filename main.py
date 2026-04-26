@@ -4,13 +4,10 @@ from get_all_files import file_paths, get_all_files_fnc
 from starting import folder_or_file, encrypting_or_decrypting, check_key
 
 key = None  # Initialize key globally
-
-
-
-
 input_choice = "None"
 int_choice = None
 key = None
+
 
 def store_key_encrypted():
     print("You chose to encrypt the files.")
@@ -19,11 +16,13 @@ def store_key_encrypted():
         key_file.write(key.decode())
     print("Please keep the key safe, otherwise this can never be decrypted again.")
 
+
 def get_key_encrypted():
     print("You chose to decrypt the files.")
     with open("key_file.txt", "r") as key_file:
         key_input = key_file.read()
         key = key_input.encode()
+
 
 def main():
     global key

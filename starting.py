@@ -63,4 +63,3 @@ def check_key(key: str):
     if key is None:  # Check if key is properly initialized
         print("Error: Key is not initialized. Exiting.")
         exit(1)
-
