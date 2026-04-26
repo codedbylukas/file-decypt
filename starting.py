@@ -18,6 +18,7 @@ def testing_exist(name):
         input("Press Enter to exit...")
         exit()
 
+
 def save_key():
     try:
         with open("key_file.txt", "r") as key_file:
