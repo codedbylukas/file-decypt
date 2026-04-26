@@ -1,3 +1,5 @@
+from sys import exit
+
 from cryptography import fernet
 
 
@@ -10,10 +12,12 @@ def encrypt_file(file_path, key):
         encrypted_data = fernet_instance.encrypt(encrypted_data)
         with open(file_path, "wb") as file:
             file.write(encrypted_data)
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        exit(0)
     except Exception as e:
         print(f"An error occurred while encrypting:  {file_path}: {e}")
-        input("Press Enter to exit...")
-        exit()
+        exit(1)
 
 
 def decrypt_file(file_path, key):
@@ -26,7 +30,9 @@ def decrypt_file(file_path, key):
 
         with open(file_path, "wb") as file:
             file.write(decrypted_data)
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        exit(0)
     except Exception as e:
         print(f"An error occurred during decryption: {file_path}: {e}")
-        input("Press Enter to exit...")
-        exit()
+        exit(1)
