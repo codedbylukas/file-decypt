@@ -2,6 +2,13 @@ from cryptography import fernet
 from sys import exit
 import os
 
+def make_to_intiger(input_choice: str):
+    try:
+        int_choice = int(input_choice)
+    except ValueError:
+        print("Invalid choice. Exiting.")
+        exit(1)
+    return int_choice
 
 def testing_exist(name):
     try:
@@ -34,11 +41,7 @@ def folder_or_file(folder_name, file_name):
     1. work with a folder 
     2. work with a single file?""")
     input_choice = input("Enter 1 or 2: ")
-    try:
-        int_choice = int(input_choice)
-    except ValueError:
-        print("Invalid choice. Exiting.")
-        exit(1)
+    int_choice = make_to_intiger(input_choice)
     if int_choice == 1:
         folder = True
         file = False
@@ -61,7 +64,7 @@ def encrypting_or_decrypting(encrypting, decrypting, key):
     2.decrypt 
     the files'?""")
     input_choice = input("Enter 1 or 2: ")
-    int_choice = int(input_choice)
+    int_choice = make_to_intiger(input_choice)
     if int_choice == 1:
         encrypting = True
         decrypting = False
