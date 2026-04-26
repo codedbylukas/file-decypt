@@ -1,4 +1,4 @@
-name: Python Syntax check
+name: Python Syntax check with flake8
 
 on:
   push:
