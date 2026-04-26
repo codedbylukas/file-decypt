@@ -47,7 +47,7 @@ def folder_or_file(folder_name, file_name):
         testing_exist(file_name)
     else:
         print("Invalid choice. Exiting.")
-        exit()
+        exit(1)
     return folder, file, folder_name, file_name
 
 
