@@ -1,6 +1,6 @@
 from cryptography import fernet
 from sys import exit
-from usefull_for_starting import make_to_intiger, testing_exist, save_key
+from .usefull_for_starting import make_to_intiger, testing_exist, save_key
 
 def folder_or_file(folder_name, file_name):
     try:

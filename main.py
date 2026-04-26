@@ -1,9 +1,9 @@
 from sys import exit
 
 from cryptography import fernet
-from crypto import encrypt_file, decrypt_file
-from get_all_files import file_paths, get_all_files_fnc
-from starting import folder_or_file, encrypting_or_decrypting, check_key
+from src.crypto import encrypt_file, decrypt_file
+from src.get_all_files import file_paths, get_all_files_fnc
+from src.starting import folder_or_file, encrypting_or_decrypting, check_key
 
 key = None  # Initialize key globally
 input_choice: str = "None"
