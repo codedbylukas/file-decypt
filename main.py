@@ -13,7 +13,7 @@ int_choice = None
 key = None
 
 def main():
-    global key
+    global key, encrypting, decrypting
     folder, file = folder_or_file(folder_name, file_name)
     encrypting, decrypting, key = encrypting_or_decrypting(encrypting, decrypting, key)
     check_key(key)
