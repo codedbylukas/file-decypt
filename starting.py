@@ -3,6 +3,22 @@ from sys import exit
 import os
 
 
+def testing_exist(name):
+    try:
+        if os.path.exists(name):
+            print(name)
+        else:
+            print("File not found. Exiting.")
+            exit(1)
+    except FileNotFoundError:
+        print("File not found. Exiting.")
+        exit(1)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        input("Press Enter to exit...")
+        exit()
+
+
 def folder_or_file(folder_name, file_name):
     print("""Do you want to 
     1. work with a folder 
@@ -13,20 +29,12 @@ def folder_or_file(folder_name, file_name):
         folder = True
         file = False
         folder_name = input("Enter the folder path: ").strip()
-        if os.path.exists(folder_name):
-            print(folder_name)
-        else:
-            print("Folder not found. Exiting.")
-            exit(1)
+        testing_exist(folder_name)
     elif int_choice == 2:
         folder = False
         file = True
         file_name = input("Enter the file path: ").strip()
-        if os.path.exists(file_name):
-            print(file_name)
-        else:
-            print("File not found. Exiting.")
-            exit(1)
+        testing_exist(file_name)
     else:
         print("Invalid choice. Exiting.")
         exit()
