@@ -1,20 +1,22 @@
-from sys import exit
-
 from cryptography import fernet
+from sys import exit
 
 
 def encrypt_file(file_path, key):
     try:
         with open(file_path, "rb") as file:
-            encrypted_data = file.read()
+            file_data = file.read()
 
         fernet_instance = fernet.Fernet(key)
-        encrypted_data = fernet_instance.encrypt(encrypted_data)
+        encrypted_data = fernet_instance.encrypt(file_data)
         with open(file_path, "wb") as file:
             file.write(encrypted_data)
     except KeyboardInterrupt:
         print("\nExiting...")
         exit(0)
+    except FileNotFoundError as e:
+        print(f"File not found: {file_path}: {e}")
+        exit(1)
     except Exception as e:
         print(f"An error occurred while encrypting:  {file_path}: {e}")
         exit(1)
