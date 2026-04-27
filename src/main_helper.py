@@ -1,3 +1,4 @@
+from sys import exit
 from src.crypto import encrypt_file, decrypt_file
 from src.get_all_files import file_paths, get_all_files_fnc
 
