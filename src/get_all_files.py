@@ -12,8 +12,6 @@ def get_all_files_fnc(directory):
                 if (
                     file == "key_file.txt"
                     or file == "main.exe"
-                    or file == "main.py"
-                    or file == "__pycache__"
                     or file == "main"
                 ):
                     continue
