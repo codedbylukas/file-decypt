@@ -25,8 +25,10 @@ class TestBasic:
 
 
 class TestFunctions:
-    def test_folder_or_file(self, monkeypatch: MonkeyPatch):
-        inputs = iter(["1", "./test_files"])  # working with folder
+    def test_folder_or_file_folder_choice(self, monkeypatch: MonkeyPatch):
+        """test working with folder"""
+        folder_path = "./test_files"
+        inputs = iter(["1", folder_path])
         monkeypatch.setattr(
             "builtins.input",
             lambda _: next(inputs),
@@ -36,4 +38,20 @@ class TestFunctions:
         )
         assert folder == True
         assert file == False
-        assert folder_name == "./test_files"
+        assert folder_name == folder_path
+
+    def test_folder_or_file_file_choice(self, monkeypatch: MonkeyPatch):
+        """test working with single file"""
+        file_path = "./test_files/does_exists.txt"
+        inputs = iter(["2", file_path])
+        monkeypatch.setattr(
+            "builtins.input",
+            lambda _: next(inputs),
+        )
+        folder, file, folder_name, file_name = folder_or_file(
+            folder_name="", file_name=""
+        )
+        assert folder == False
+        assert file == True
+        assert file_name == file_path
+
