@@ -10,10 +10,10 @@ def if_file(encrypting: bool, decrypting: bool, file_path: str, key: bytes):
         decrypt_file(file_path, key)
 
 
-def store_key_encrypted(key: bytes):
+def store_key_encrypted(key: bytes, keyfile: str = "key_file.txt"):
     print("You chose to encrypt the files.")
     print("Schlüssel: ", key.decode())
-    with open("key_file.txt", "w") as key_file:
+    with open(keyfile, "w") as key_file:
         key_file.write(key.decode())
     print("Please keep the key safe, otherwise this can never be decrypted again.")
 
