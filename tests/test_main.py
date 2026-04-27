@@ -1,11 +1,16 @@
+from types import NoneType
 from pytest import MonkeyPatch
-from main import main
+from main import main, key
 
 
-def test_main_is_clickable(monkeypatch: MonkeyPatch):
-    monkeypatch.setattr(
-        "builtins.input",
-        lambda _: """
-    """,
-    )
-    assert callable(main)
+class TestBasic:
+    def test_main_is_clickable(self, monkeypatch: MonkeyPatch):
+        monkeypatch.setattr(
+            "builtins.input",
+            lambda _: """
+        """,
+        )
+        assert callable(main)
+
+    def test_key_is_setted(self):
+        assert isinstance(key, NoneType)
