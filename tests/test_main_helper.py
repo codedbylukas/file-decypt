@@ -24,7 +24,7 @@ class TestBasic:
 
 class TestKeyFunctions:
     def test_store_key_encrypted(self):
-        key_file = Path("test_files/test_key_file.txt")
+        key_file = Path("test_files/test_key_file0.txt")
         assert callable(store_key_encrypted)
         store_key_encrypted(b"test", keyfile=key_file)
         with open(key_file, "r") as f:
@@ -32,4 +32,11 @@ class TestKeyFunctions:
         key_file.unlink(missing_ok=True)
 
     def test_get_key_encrypted(self):
+        key_file = Path("test_files/test_key_file1.txt")
+        assert callable(store_key_encrypted)
+        store_key_encrypted(b"test", keyfile=key_file)
         assert callable(get_key_encrypted)
+        get_key_encrypted(keyfile=key_file)
+        with open(key_file, "r") as f:
+            assert f.read() == "test"
+        key_file.unlink(missing_ok=True)

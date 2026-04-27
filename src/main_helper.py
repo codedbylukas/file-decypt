@@ -18,9 +18,9 @@ def store_key_encrypted(key: bytes, keyfile: str = "key_file.txt"):
     print("Please keep the key safe, otherwise this can never be decrypted again.")
 
 
-def get_key_encrypted():
+def get_key_encrypted(keyfile: str = "key_file.txt"):
     print("You chose to decrypt the files.")
-    with open("key_file.txt", "r") as key_file:
+    with open(keyfile, "r") as key_file:
         key_input = key_file.read()
         key = key_input.encode()
 
