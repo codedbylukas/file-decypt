@@ -24,7 +24,7 @@ class TestBasic:
         assert isinstance(check_key, FunctionType)
 
 
-class TestFunctions:
+class TestFolderOrFileWorks:
     def test_folder_or_file_folder_choice(self, monkeypatch: MonkeyPatch):
         """test working with folder"""
         folder_path = "./test_files"
@@ -55,3 +55,32 @@ class TestFunctions:
         assert file == True
         assert file_name == file_path
 
+
+class TestFolderOrFileNotWorks:
+    def test_folder_or_file_folder_choice_does_not_exists(
+        self, monkeypatch: MonkeyPatch
+    ):
+        """test working with folder"""
+        folder_path = "non_existing_dir_for_sure"
+        inputs = iter(["1", folder_path])
+        monkeypatch.setattr(
+            "builtins.input",
+            lambda _: next(inputs),
+        )
+        with pytest.raises(SystemExit):
+            folder, file, folder_name, file_name = folder_or_file(
+                folder_name="", file_name=""
+            )
+
+    def test_folder_or_file_file_choice_does_not_exists(self, monkeypatch: MonkeyPatch):
+        """test working with single file"""
+        file_path = "./test_files/does_not_exists.txt"
+        inputs = iter(["2", file_path])
+        monkeypatch.setattr(
+            "builtins.input",
+            lambda _: next(inputs),
+        )
+        with pytest.raises(SystemExit):
+            folder, file, folder_name, file_name = folder_or_file(
+                folder_name="", file_name=""
+            )
