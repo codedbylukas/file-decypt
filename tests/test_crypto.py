@@ -11,6 +11,22 @@ class TestBasic:
     def test_callable_decrypt_file(self):
         assert callable(decrypt_file)
 
+class TestFilesExist:
+
+
+    def test_test_files_dir_exists(self):
+        assert Path("test_files").exists()
+        assert Path("test_files").is_dir()
+
+
+    def test_test_files_contain_files(self):
+        assert Path("test_files/fail.txt").exists()
+        assert Path("test_files/test0.txt").exists()
+        assert Path("test_files/test1.txt").exists()
+        assert Path("test_files/test2.txt").exists()
+    def test_not_existent_file(self):
+        assert Path("test_files/none_existent_file.txt").exists() == False
+
 
 class TestFailCases:
     def test_encypt_file_with_wrong_key(self):
@@ -31,26 +47,14 @@ class TestFailCases:
     def test_decrypt_file_wrong_key_and_file(self):
         key = fernet.Fernet.generate_key()
         with pytest.raises(SystemExit) as excinfo:
-            decrypt_file("test_files/doesnotexist.txt", "wrong_key")
+            decrypt_file("test_files/none_existent_file.txt", "wrong_key")
         assert excinfo.value.code == 1
 
     def test_encrypt_file_wrong_key(self):
         key = fernet.Fernet.generate_key()
         with pytest.raises(SystemExit) as excinfo:
-            encrypt_file("test_files/doesnotexist.txt", "wrong_key")
+            encrypt_file("test_files/none_existent_file.txt", "wrong_key")
         assert excinfo.value.code == 1
-
-
-def test_test_files_dir_exists():
-    assert Path("test_files").exists()
-    assert Path("test_files").is_dir()
-
-
-def test_test_files_contain_files():
-    assert Path("test_files/fail.txt").exists()
-    assert Path("test_files/test0.txt").exists()
-    assert Path("test_files/test1.txt").exists()
-    assert Path("test_files/test2.txt").exists()
 
 
 def test_encypt_file():
