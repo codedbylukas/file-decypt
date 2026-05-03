@@ -2,14 +2,20 @@ import pytest
 from pathlib import Path
 from cryptography import fernet
 from src.crypto import encrypt_file, decrypt_file
-
+from types import FunctionType
 
 class TestBasic:
     def test_callable_encrypt_file(self):
         assert callable(encrypt_file)
+    
+    def test_encrypted_file_fn_is_an_function_type(self):
+        assert isinstance(encrypt_file, FunctionType)
 
     def test_callable_decrypt_file(self):
         assert callable(decrypt_file)
+
+    def test_decrypt_file_fn_is_an_function_type(self):
+        assert isinstance(decrypt_file, FunctionType)
 
 
 class TestFilesExist:
