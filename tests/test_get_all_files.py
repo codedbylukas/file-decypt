@@ -10,7 +10,8 @@ class BasicTest:
     def test_get_all_files_fnc_right_type():
         assert isinstance(get_all_files_fnc, FunctionType)
 
-class AtherTests:    
+
+class AtherTests:
     def test_get_all_files_fnc_files_count():
         actual = {
             os.path.normpath(p) for p in get_all_files_fnc("test_files/get_all_files")
